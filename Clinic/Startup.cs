@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using Clinic.Data;
 using Clinic.Models;
 using Clinic.Services;
+using Autofac;
 
 namespace Clinic
 {
@@ -22,7 +23,9 @@ namespace Clinic
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddEnvironmentVariables();
+            this.Configuration = builder.Build();
 
             if (env.IsDevelopment())
             {
@@ -53,6 +56,11 @@ namespace Clinic
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
         }
+
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+        }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
