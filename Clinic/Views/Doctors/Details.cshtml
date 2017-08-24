@@ -1,0 +1,43 @@
+﻿@model Clinic.Models.Doctor
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Szczegóły lekarza
+    <p>
+        <input type="button" class=" btn btn-info" value="Powrót do listy lekarzy" onclick="location.href='@Url.Action("Index", "Doctors")'" />
+    </p>
+
+    </h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Note)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Note)
+        </dd>
+    </dl>
+</div>
+
+
+<div class="form-group">
+    <div class=" col-md-4 col-md-offset-1">
+        <input type="button" class=" btn btn-info" value="Edytuj" onclick="location.href='@Url.Action("Edit", "Doctors", new { id = Model.DoctorID })'" />
+    </div>
+</div>

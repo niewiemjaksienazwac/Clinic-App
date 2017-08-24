@@ -1,0 +1,68 @@
+﻿@model Clinic.Models.Appointment
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>
+    Dodawanie wizyty
+    <p>
+        <input type="button" class=" btn btn-info" value="Powrót do listy wizyt" onclick="location.href='@Url.Action("Index", "Appointments")'" />
+    </p>
+</h2>
+<form asp-action="Create">
+    <div class="form-horizontal">        
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Patient" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="PatientID" class ="form-control" asp-items="ViewBag.PatientID">
+                    <option value="">-- Wybierz pacjenta --</option>
+
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Doctor" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="DoctorID" class ="form-control" asp-items="ViewBag.DoctorID">
+                    <option value="">-- Wybierz lekarza --</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="DateOfAppointment" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="DateOfAppointment" class="form-control" data-val-required="To pole jest wymagane." />
+                <span asp-validation-for="DateOfAppointment" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="TimeOfAppointment" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="TimeOfAppointment" class="form-control" asp-items="ViewBag.Hours">
+                    <option value="">-- Wybierz godzine --</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Note" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Note" class="form-control" />
+                <span asp-validation-for="Note" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Dodaj" class="btn btn-success" />
+            </div>
+        </div>
+
+    </div>
+</form>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

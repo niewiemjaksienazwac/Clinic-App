@@ -1,0 +1,44 @@
+﻿@model Clinic.Models.Doctor
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Potwierdź usunięcie lekarza
+    <p>
+        <input type="button" class=" btn btn-info" value="Powrót do listy lekarzy" onclick="location.href='@Url.Action("Index", "Doctors")'" />
+    </p>
+    
+    </h2>
+
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <input type="hidden" asp-for="DoctorID" />
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Note)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Note)
+        </dd>
+    </dl>
+   
+    <form asp-action="Delete">
+        <div class="form-actions no-color col-md-4 col-md-offset-1">
+            <input type="submit" value="Usuń" class="btn btn-danger" />
+        </div>
+    </form>
+</div>

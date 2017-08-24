@@ -1,0 +1,93 @@
+﻿@model Clinic.Models.Appointment
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>
+    Szczegóły wizyty
+    <p>
+        <input type="button" class=" btn btn-info" value="Powrót do listy wizyt" onclick="location.href='@Url.Action("Index", "Appointments")'" />
+    </p>
+</h2>
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfAppointment)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateOfAppointment)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeOfAppointment)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TimeOfAppointment)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Note)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Note)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Doctor)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Doctor.FullName)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.Patient)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Patient.FullNamePesel)            
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Patient.DateOfBirth)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Patient.DateOfBirth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Patient.Address)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Patient.Address)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Patient.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Patient.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Patient.Phone)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Patient.Phone)
+        </dd>
+       
+        <dt>
+            @Html.DisplayNameFor(model => model.Patient.Note)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Patient.Note)
+        </dd>
+
+    </dl>
+</div>
+
+
+
+
+<div class="form-group">
+    <div class=" col-md-4 col-md-offset-1">
+        <input type="button" class=" btn btn-info" value="Edytuj" onclick="location.href='@Url.Action("Edit", "Appointments", new { id = Model.AppointmentID })'" />
+    </div>
+</div>
+

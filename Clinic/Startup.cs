@@ -81,7 +81,7 @@ namespace Clinic
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Appointments}/{action=Index}/{id?}");
             });
         }
     }
